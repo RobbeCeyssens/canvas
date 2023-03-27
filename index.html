@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Gradient Hover Example</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Set initial colors
+      let colorStop1 = "red";
+      let colorStop2 = "white";
+
+      // Create gradient rectangle
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, colorStop1);
+      gradient.addColorStop(1, colorStop2);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Change colors on mouseover
+      canvas.addEventListener("mouseover", function(event) {
+        colorStop1 = "blue";
+        colorStop2 = "lightblue";
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, colorStop1);
+        gradient.addColorStop(1, colorStop2);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // Change colors on mouseout
+      canvas.addEventListener("mouseout", function(event) {
+        colorStop1 = "red";
+        colorStop2 = "white";
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, colorStop1);
+        gradient.addColorStop(1, colorStop2);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      });
+    </script>
+  </body>
+</html>
